@@ -56,7 +56,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: sftp
+          protocol: ftps-legacy
           port: 22
           server-dir: /home/umurinzi/public_html/Umurinzi-API
           local-dir: ./          # deploy all files in repo root
