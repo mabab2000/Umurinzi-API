@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ./                  # remote target (inside /home/umurinzi/public_html/alphonse)
-          local-dir: ./API/               # local source (Laravel project folder in repo)
+                        # local source (Laravel project folder in repo)
           exclude: |
             **/.git*
             **/node_modules/**
