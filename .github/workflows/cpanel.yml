@@ -34,3 +34,8 @@ jobs:
       - name: Run Laravel migrations (optional)
         run: |
           echo "You may need to run migrations manually on cPanel."
+
+      - name: Custom Deployment Tasks
+        run: |
+          export DEPLOYPATH=/home/example/public_html/
+          /bin/cp -R images $DEPLOYPATH
