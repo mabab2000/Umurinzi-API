@@ -37,8 +37,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 22
+          protocol: ftp
+          port: 21
           server-dir: ./                # remote target inside /home/umurinzi/public_html/alphonse
                     # local Laravel project folder in repo
           exclude: |
