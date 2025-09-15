@@ -6,63 +6,38 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: Deploy Laravel Project
+  web-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ Checkout code
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # 2️⃣ Setup PHP
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mbstring, bcmath, curl, xml, zip
-          coverage: none
+      - name: Install PHP dependencies
+        run: composer install --ignore-platform-reqs --no-dev --prefer-dist
 
-      # 3️⃣ Setup Node (if using mix or vite)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      # 4️⃣ Copy .env if it doesn't exist
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-      # 5️⃣ Install Composer dependencies
-      - name: Install Composer Dependencies
-        run: composer install --no-dev --optimize-autoloader --ignore-platform-reqs
-
-      # 6️⃣ Generate application key
-      - name: Generate App Key
+      - name: Generate key
         run: php artisan key:generate
 
-      # 7️⃣ Create storage symlink
-      - name: Create storage link
-        run: php artisan storage:link || true
+      - name: Generate storage link
+        run: php artisan storage:link
 
-      # 8️⃣ Set permissions
-      - name: Set Permissions
-        run: chmod -R 775 storage bootstrap/cache
+      - name: Set permissions
+        run: chmod -R 777 storage bootstrap/cache
 
-      # 9️⃣ Deploy files to server via SFTP
-      - name: Deploy to Server
+      - name: Deploy to server
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: vally.dnshfe.com
-
+          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: FTPS
-          port: 21
-          server-dir: /home/umurinzi/public_html/alphonse/
-          local-dir: ./          # deploy all files in repo root
+          protocol: sftp
+          port: 22
+          server-dir: /home/umurinzi/public_html/alphonse/  # target on server
+          local-dir: ./                                  # local repo root
           exclude: |
             **/.git*
-            **/node_modules/**
-            **/tests/**
+            node_modules/**
             .env.example
