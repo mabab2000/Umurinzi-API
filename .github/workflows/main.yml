@@ -40,7 +40,7 @@ jobs:
           protocol: ftps
           port: 22
           server-dir: ./                # remote target inside /home/umurinzi/public_html/alphonse
-          local-dir: ./API/             # local Laravel project folder in repo
+                    # local Laravel project folder in repo
           exclude: |
             .git/
             node_modules/
