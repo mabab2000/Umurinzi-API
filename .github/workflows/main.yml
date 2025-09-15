@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to server
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: vally.dnshfe.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: FTPS
