@@ -31,7 +31,8 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
 
       - name: 📂 Sync files
-        uses: mabab2000/Umurinzi-API@4.0.0
+        uses: mabab2000/umurinzi-api@v1.0.0
+
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
