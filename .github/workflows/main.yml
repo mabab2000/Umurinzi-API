@@ -58,7 +58,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps-legacy
           port: 22
-          server-dir: /home/umurinzi/public_html/Umurinzi-API
+          server-dir: /home/umurinzi/public_html/alphonse/
           local-dir: ./          # deploy all files in repo root
           exclude: |
             **/.git*
