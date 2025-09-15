@@ -56,8 +56,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps-legacy
-          port: 22
+          protocol: FTPS
+          port: 21
           server-dir: /home/umurinzi/public_html/alphonse/
           local-dir: ./          # deploy all files in repo root
           exclude: |
