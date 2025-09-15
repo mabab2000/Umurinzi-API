@@ -37,7 +37,4 @@ jobs:
           port: 21
           server-dir: /home/umurinzi/public_html/alphonse/  # target on server
           local-dir: ./                                  # local repo root
-          exclude: |
-            **/.git*
-            node_modules/**
-            .env.example
+         
