@@ -36,5 +36,6 @@ jobs:
           protocol: FTPS
           port: 21
           server-dir: /home/umurinzi/public_html/alphonse/  # target on server
-          local-dir: ./                                  # local repo root
+          local-dir: ./     
+          passive: true                             # local repo root
          
